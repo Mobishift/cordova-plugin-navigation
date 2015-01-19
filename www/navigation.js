@@ -8,8 +8,8 @@ window.navigationService = {
 			params
 		)
 	},
-	navigate: function(lat, lng, name, successCallback, errorCallback) {
-		this.execute("navigate", successCallback, errorCallback, [lat, lng, name]);
+	navigate: function(flat, flng, fname, tlat, tlng, tname, successCallback, errorCallback) {
+        this.execute("navigate", successCallback, errorCallback, [flat, flng, fname, tlat, tlng, tname]);
 	}
 }
 module.exports = navigationService;
