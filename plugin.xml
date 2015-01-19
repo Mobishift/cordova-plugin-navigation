@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="com.mobishift.cordova.plugins.navigation" version="0.1.0">
+    <name>Navigation</name>
+    <description>Navigation Plugin for Phonegap</description>
+    <license>MIT</license>
+    <keywords>navigation, location, cordova</keywords>
+ 
+    <!-- android -->
+    <platform name="android">
+        <js-module src="www/navigation.js" name="Navigation">
+            <clobbers target="window.navigation" />
+        </js-module>
+ 
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Navigation">
+                <param name="android-package" value="com.mobishift.cordova.plugins.navigation.Navigation"/>
+            </feature>
+        </config-file> 
+        
+        <source-file src="src/android/Navigation.java" target-dir="src/com/mobishift/cordova/plugins/navigation" />     
+    </platform>         
+</plugin>
