@@ -20,15 +20,23 @@ public class Navigation extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args,
             final CallbackContext callbackContext) {
-        if (args.length() != 2) {
+        if (args.length() != 3) {
 			callbackContext.error("args invalid");
 			return false;
 		}
         if (GET_ACTION.equals(action)) {
-            double lng = args.getDouble(0);
-            double lat = args.getDouble(1);
-            Uri uri = Uri.parse("geo:" + lng + "," + lat);  
-            Intent it = new Intent(Intent.Action_VIEW,uri);  
+            double lng, lat;
+            String name;
+            try{
+                lat = args.getDouble(0);
+                lng = args.getDouble(1);
+                name = args.getString(2);
+            } catch (JSONException e) {
+				callbackContext.error(e.getMessage());
+				return false;
+            }
+            Uri uri = Uri.parse("geo:" + lat + "," + lng + "?q=" + name);  
+            Intent it = new Intent(Intent.ACTION_VIEW,uri);  
             cordova.getActivity().startActivity(it);
             return true;
         }
